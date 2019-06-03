@@ -32,8 +32,8 @@
 #define RES_CLASS "Sxiv"
 
 enum {
-	H_TEXT_PAD = 5,
-	V_TEXT_PAD = 1
+	H_TEXT_PAD = 25,
+	V_TEXT_PAD = 15
 };
 
 static struct {
@@ -453,7 +453,7 @@ void win_draw_bar(win_t *win)
 	if (win->fullscreen && !win->light)
 		bg = &win->bg, fg = &win->fg;
 	else
-		bg = &win->fg, fg = &win->bg;
+		bg = &win->bg, fg = &win->fg;
 
 	XSetForeground(e->dpy, gc, bg->pixel);
 	XFillRectangle(e->dpy, win->buf.pm, gc, 0, win->h, win->w, win->bar.h);
