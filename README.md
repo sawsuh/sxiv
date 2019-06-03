@@ -1,4 +1,6 @@
 ![sxiv](http://muennich.github.com/sxiv/img/logo.png "sxiv")
+
+
 **Note**
 This is my fork. I have changed the bar color and padding, as well as some of the keybindings
 
