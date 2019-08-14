@@ -32,8 +32,8 @@
 #define RES_CLASS "Sxiv"
 
 enum {
-	H_TEXT_PAD = 25,
-	V_TEXT_PAD = 15
+	H_TEXT_PAD = 35,
+	V_TEXT_PAD = 25
 };
 
 static struct {
