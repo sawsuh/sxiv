@@ -121,8 +121,8 @@ void win_init(win_t *win)
 
 	bg = win_res(db, RES_CLASS ".background", "black");
 	fg = win_res(db, RES_CLASS ".foreground", "white");
-	win_alloc_color(e, bg, &win->bg);
-	win_alloc_color(e, fg, &win->fg);
+	win_alloc_color(e, bg, &win->fg);
+	win_alloc_color(e, fg, &win->bg);
 
 	win->bar.l.size = BAR_L_LEN;
 	win->bar.r.size = BAR_R_LEN;
@@ -258,7 +258,7 @@ void win_open(win_t *win)
 	win->buf.h = e->scrh;
 	win->buf.pm = XCreatePixmap(e->dpy, win->xwin,
 	                            win->buf.w, win->buf.h, e->depth);
-	XSetForeground(e->dpy, gc, win->bg.pixel);
+	XSetForeground(e->dpy, gc, win->fg.pixel);
 	XFillRectangle(e->dpy, win->buf.pm, gc, 0, 0, win->buf.w, win->buf.h);
 	XSetWindowBackgroundPixmap(e->dpy, win->xwin, win->buf.pm);
 
@@ -340,7 +340,7 @@ void win_clear(win_t *win)
 		win->buf.pm = XCreatePixmap(e->dpy, win->xwin,
 		                            win->buf.w, win->buf.h, e->depth);
 	}
-	XSetForeground(e->dpy, gc, win->bg.pixel);
+	XSetForeground(e->dpy, gc, win->fg.pixel);
 	XFillRectangle(e->dpy, win->buf.pm, gc, 0, 0, win->buf.w, win->buf.h);
 }
 
@@ -400,8 +400,8 @@ void win_draw_bar(win_t *win)
 	XSetForeground(e->dpy, gc, win->fg.pixel);
 	XFillRectangle(e->dpy, win->buf.pm, gc, 0, win->h, win->w, win->bar.h);
 
-	XSetForeground(e->dpy, gc, win->bg.pixel);
-	XSetBackground(e->dpy, gc, win->fg.pixel);
+	XSetForeground(e->dpy, gc, win->fg.pixel);
+	XSetBackground(e->dpy, gc, win->bg.pixel);
 
 	if ((len = strlen(r->buf)) > 0) {
 		if ((tw = TEXTWIDTH(win, r->buf, len)) > w)
