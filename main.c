@@ -70,10 +70,10 @@ typedef struct {
 } extcmd_t;
 
 struct {
-  extcmd_t f;
-  int fd;
-  unsigned int i, lastsep;
-  pid_t pid;
+	extcmd_t f;
+	int fd;
+	unsigned int i, lastsep;
+	pid_t pid;
 } info;
 
 struct {
@@ -774,7 +774,7 @@ void run(void)
 					} else {
 						tns.dirty = true;
 					}
-					if (!resized || win.fullscreen) {
+					if (!resized) {
 						redraw();
 						set_timeout(clear_resize, TO_REDRAW_RESIZE, false);
 						resized = true;
